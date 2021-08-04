@@ -43,9 +43,18 @@ class MainActivity : AppCompatActivity(), View.OnClickListener {
 
         binding.btnCity.setOnClickListener(this)
 
-        mainViewModel.getWeathers().observe(this, { weatherItem ->
-            if (weatherItem != null) {
-                adapter.setData(weatherItem)
+        // 1. cara 1
+//        mainViewModel.getWeathers().observe(this, { weatherItem ->
+//            if (weatherItem != null) {
+//                adapter.setData(weatherItem)
+//                showLoading(false)
+//            }
+//        })
+
+        //2. cara 2
+        mainViewModel.getWeathers().observe(this, {
+            if (it != null) {
+                adapter.setData(it)
                 showLoading(false)
             }
         })
